@@ -1,6 +1,18 @@
 import { error, redirect, type Actions } from '@sveltejs/kit';
 import { createFirebaseSession } from '$lib/firebase-session';
 import { COOKIE_NAME } from '$lib/firebase-admin';
+import type { PageServerLoad } from './$types';
+
+export const load = (async ({ parent }) => {
+
+    const data = await parent();
+
+    if (data.user) {
+        return redirect(302, '/admin');
+    }
+
+}) satisfies PageServerLoad;
+
 
 export const actions = {
 

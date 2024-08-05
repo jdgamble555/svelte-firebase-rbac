@@ -84,8 +84,14 @@ const user = (
         defaultUser,
         (set: Subscriber<UserType | null>) => {
             return onIdTokenChanged(auth, (_user: User | null) => {
-                // if no user on server, logout
 
+                // if no user on server, logout
+                if (defaultUser && !_user) {
+                    fetch('/login?/logout', {
+                        method: 'POST',
+                        body: new FormData()
+                    });
+                }
                 if (!_user) {
                     set(null);
                     return;
