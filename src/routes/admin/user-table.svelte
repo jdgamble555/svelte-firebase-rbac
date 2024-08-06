@@ -33,15 +33,15 @@
 								<div class="font-medium">{user.displayName}</div>
 							{/if}
 							{#if user.email}
-								<div class="text-muted-foreground hidden text-sm md:inline">{user?.email}</div>
+								<div class="text-muted-foreground text-sm md:inline">{user?.email}</div>
 							{/if}
 						</Table.Cell>
-						<Table.Cell class="hidden sm:table-cell">User</Table.Cell>
-						<Table.Cell class="hidden sm:table-cell">{user?.emailVerified}</Table.Cell>
-						<Table.Cell class="hidden md:table-cell">{user.uid}</Table.Cell>
+						<Table.Cell>{user.localId}</Table.Cell>
+						<Table.Cell>User</Table.Cell>
+						<Table.Cell>{user?.emailVerified}</Table.Cell>						
 						<Table.Cell>
-							{#if user?.photoURL}
-								<img alt={user.displayName} src={user.photoURL} />
+							{#if user?.photoUrl}
+								<img alt={user.displayName} src={user.photoUrl} />
 							{/if}
 						</Table.Cell>
 					</Table.Row>
